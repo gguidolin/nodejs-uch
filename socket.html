@@ -1,0 +1,21 @@
+<html>
+<head>
+	<title>Socket Example</title>
+</head>
+<body>
+	<h1 id="mostrar"></h1>
+	<button id="start">Empezar</button>
+	<script src="http://localhost:8080/socket.io/socket.io.js"></script>
+	<script src="media/jquery.js"></script>
+	<script>
+	var socket = io.connect('http://localhost:8080');
+	socket.on('datos', function (data) {
+		console.log(data)
+		$('#mostrar').html(data);
+	});
+	$('#start').on('click',function(){
+		socket.emit('start');
+	});
+	</script>
+</body>
+</html>
